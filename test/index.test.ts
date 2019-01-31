@@ -1,5 +1,4 @@
 import TJMobBridge from '../src'
-const tjMobBridge = new TJMobBridge()
 /**
  * Dummy test
  */
@@ -8,11 +7,18 @@ describe('TJMobBridge test', async () => {
     expect(true).toBeTruthy()
   })
 
-  it('TJMobBridge.getInstance is TJMobBridge', () => {
+  it('TJMobBridge getInstance is TJMobBridge', () => {
     expect(TJMobBridge.getInstance()).toBeInstanceOf(TJMobBridge)
   })
 
   it('TJMobBridge can be init', async () => {
+    const tjMobBridge = new TJMobBridge()
+    await tjMobBridge.init()
+    expect(tjMobBridge.isInit).toBeTruthy()
+  })
+
+  it('TJMobBridge check wx env', async () => {
+    const tjMobBridge = new TJMobBridge()
     window.wx = {}
     Object.defineProperty(window.navigator, 'userAgent', {
       value: 'micromessenger test',
@@ -20,5 +26,12 @@ describe('TJMobBridge test', async () => {
     })
     await tjMobBridge.init()
     expect(tjMobBridge.getEnv()).toBe(3)
+  })
+
+  it('TJMobBridge login', async () => {
+    const tjMobBridge = new TJMobBridge()
+    await tjMobBridge.init()
+    tjMobBridge.login()
+    expect(tjMobBridge.login()).toBeUndefined()
   })
 })
