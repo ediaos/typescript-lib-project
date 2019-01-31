@@ -48,7 +48,7 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testEnvironment": "node",
+    "testEnvironment": "jest-environment-jsdom-global",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
@@ -93,6 +93,8 @@
     "husky": "^1.0.1",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
+    "jest-environment-jsdom": "^24.0.0",
+    "jest-environment-jsdom-global": "^1.1.0",
     "lint-staged": "^8.0.0",
     "lodash.camelcase": "^4.3.0",
     "prettier": "^1.14.3",
