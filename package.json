@@ -1,13 +1,14 @@
 {
-  "name": "tj-mob-bridge",
+  "name": "@tujia/tj-mob-bridge",
   "version": "0.0.1",
-  "description": "",
+  "description": "tujia mob bridge",
   "keywords": [],
   "main": "dist/tj-mob-bridge.umd.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "lib"
   ],
   "author": "guoxing <guoxing@tujia.com>",
   "repository": {
