@@ -1,11 +1,11 @@
 {
   "name": "tj-mob-bridge",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
-  "main": "dist/tj-mob-bridge.umd.js",
+  "main": "lib/index.js",
   "module": "dist/tj-mob-bridge.es5.js",
-  "typings": "dist/types/tj-mob-bridge.d.ts",
+  "typings": "lib/index.d.ts",
   "files": [
     "dist"
   ],
@@ -106,7 +106,7 @@
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.18.0",
+    "rollup-plugin-typescript2": "^0.19.2",
     "semantic-release": "^15.9.16",
     "shelljs": "^0.8.3",
     "travis-deploy-once": "^5.0.9",
@@ -116,6 +116,6 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.12.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.3.1"
   }
 }
