@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "keywords": [],
-  "main": "lib/index.js",
-  "module": "dist/tj-mob-bridge.es5.js",
+  "main": "dist/tj-mob-bridge.umd.js",
+  "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "dist"
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && rimraf lib",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
