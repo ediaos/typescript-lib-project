@@ -10,7 +10,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const pkg = require('./package.json')
 
-const libraryName = 'tj-mob-bridge'
+const libraryName = 'ts-lib-project'
 export default {
   input: isDev ? 'src/demo/index.ts' : `src/index.ts`,
   output: [

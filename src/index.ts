@@ -62,19 +62,19 @@ export class TJMobBridge {
   }
   // 登录
   login() {
-    console.log('tj-mob-bridge login')
+    console.log('ts-lib-project login')
   }
   // 唤起app
   callApp() {
-    console.log('tj-mob-bridge callApp')
+    console.log('ts-lib-project callApp')
   }
   // 微信分享
   shareWeixin() {
-    console.log('tj-mob-bridge shareWeixin')
+    console.log('ts-lib-project shareWeixin')
   }
   // 微博分享
   shareWeiBo() {
-    console.log('tj-mob-bridge shareWeiBo')
+    console.log('ts-lib-project shareWeiBo')
   }
 
   // static
