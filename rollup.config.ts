@@ -4,15 +4,21 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
+import serve from 'rollup-plugin-serve'
+const isDev = process.env.NODE_ENV === 'development'
 
 const pkg = require('./package.json')
 
 const libraryName = 'tj-mob-bridge'
-
 export default {
-  input: `src/index.ts`,
+  input: isDev ? 'src/demo/index.ts' : `src/index.ts`,
   output: [
-    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true }
+    {
+      file: isDev ? 'src/demo/dist/index.umd.js' : pkg.main,
+      name: camelCase(libraryName),
+      format: 'umd',
+      sourcemap: true
+    }
     // { file: pkg.module, format: 'es', sourcemap: true }
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
@@ -34,5 +40,15 @@ export default {
 
     // Resolve source maps to the original source
     sourceMaps()
-  ]
+  ].concat(
+    isDev
+      ? [
+          serve({
+            open: true,
+            contentBase: 'src/demo',
+            port: 8080
+          })
+        ]
+      : []
+  )
 }
