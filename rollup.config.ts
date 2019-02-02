@@ -5,6 +5,7 @@ import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
 import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
 const isDev = process.env.NODE_ENV === 'development'
 
 const pkg = require('./package.json')
@@ -14,7 +15,7 @@ export default {
   input: isDev ? 'src/demo/index.ts' : `src/index.ts`,
   output: [
     {
-      file: isDev ? 'src/demo/dist/index.umd.js' : pkg.main,
+      file: isDev ? 'src/demo/dist/demo.umd.js' : pkg.main,
       name: camelCase(libraryName),
       format: 'umd',
       sourcemap: true
@@ -47,6 +48,9 @@ export default {
             open: true,
             contentBase: 'src/demo',
             port: 8080
+          }),
+          livereload({
+            watch: 'src/demo/dist'
           })
         ]
       : []

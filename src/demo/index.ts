@@ -1,6 +1,6 @@
 import TJMobBridge from '..'
 
-console.log('1See this in your browser console: Typescript Webpack Starter Launched')
+console.log('See this in your browser console: Typescript Webpack Starter Launched')
 
 async function init() {
   const tjMobBridge = TJMobBridge.getInstance()
