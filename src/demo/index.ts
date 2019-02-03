@@ -1,11 +1,11 @@
-import TJMobBridge from '..'
+import MobBridge from '..'
 
 console.log('See this in your browser console: Typescript Webpack Starter Launched')
 
-async function init() {
-  const tjMobBridge = TJMobBridge.getInstance()
-  await tjMobBridge.init()
-  tjMobBridge.login()
+function init() {
+  const mobBridge = MobBridge.getInstance()
+  mobBridge.login()
+  console.log('mob-bridge intance', mobBridge)
 }
 
 init()
