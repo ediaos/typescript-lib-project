@@ -4,7 +4,7 @@ console.log('See this in your browser console: Typescript Webpack Starter Launch
 
 function init() {
   const mobBridge = MobBridge.getInstance()
-  mobBridge.login()
+  mobBridge.getTestNumber()
   console.log('mob-bridge intance', mobBridge)
 }
 

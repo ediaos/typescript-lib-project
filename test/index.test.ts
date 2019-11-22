@@ -2,8 +2,11 @@ import MobBridge from '../src'
 /**
  * Dummy test
  */
-describe('MobBridge test', async () => {
+describe('MobBridge test', () => {
   it('works if true is truthy', () => {
-    expect(true).toBeTruthy()
+    expect(MobBridge.getInstance()).toBeTruthy()
+  })
+  it('works if getNumbers', () => {
+    expect(MobBridge.getInstance().getTestNumber()).toEqual(1)
   })
 })
