@@ -6,9 +6,11 @@ import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
+import rollupReplace from 'rollup-plugin-replace'
+const license = require('rollup-plugin-license')
 const isDev = process.env.NODE_ENV === 'development'
-
 const pkg = require('./package.json')
+process.env.VERSION = pkg.version
 
 const libraryName = 'ts-lib-project'
 export default {
@@ -40,7 +42,19 @@ export default {
     resolve(),
 
     // Resolve source maps to the original source
-    sourceMaps()
+    sourceMaps(),
+    // add env for project
+    rollupReplace({
+      'process.env.NODE_ENV': JSON.stringify(isDev ? 'development' : 'production'),
+      'process.env.VERSION': JSON.stringify(pkg.version)
+    }),
+    // add license for dist
+    license({
+      banner: `/*!
+                * typescript-project v${process.env.VERSION}
+                * © ${new Date().getFullYear()} EDiaos
+                */`
+    })
   ].concat(
     isDev
       ? [
