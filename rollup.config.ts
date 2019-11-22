@@ -7,23 +7,33 @@ import json from 'rollup-plugin-json'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import rollupReplace from 'rollup-plugin-replace'
-const license = require('rollup-plugin-license')
-const isDev = process.env.NODE_ENV === 'development'
+import license from 'rollup-plugin-license'
 const pkg = require('./package.json')
+
 process.env.VERSION = pkg.version
+const isDev = process.env.NODE_ENV === 'development'
 
 const libraryName = 'ts-lib-project'
-export default {
-  input: isDev ? 'src/demo/index.ts' : `src/index.ts`,
-  output: [
-    {
-      file: isDev ? 'src/demo/dist/demo.umd.js' : pkg.main,
-      name: camelCase(libraryName),
-      format: 'umd',
-      sourcemap: true
-    }
-    // { file: pkg.module, format: 'es', sourcemap: true }
-  ],
+const banner = `/*!
+ * typescript-project v${process.env.VERSION}
+ * © ${new Date().getFullYear()} EDiaos
+ */`
+// support muti output
+let multiple = [
+  {
+    input: isDev ? 'src/demo/index.ts' : `src/index.ts`,
+    output: [
+      {
+        file: isDev ? 'src/demo/dist/demo.umd.js' : pkg.main,
+        name: camelCase(libraryName),
+        format: 'umd',
+        sourcemap: true
+      }
+    ]
+  }
+]
+
+let defaultConfig = {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
   watch: {
@@ -50,10 +60,7 @@ export default {
     }),
     // add license for dist
     license({
-      banner: `/*!
-                * typescript-project v${process.env.VERSION}
-                * © ${new Date().getFullYear()} EDiaos
-                */`
+      banner
     })
   ].concat(
     isDev
@@ -70,3 +77,7 @@ export default {
       : []
   )
 }
+const multipleList = multiple.map(config => {
+  return Object.assign(config, defaultConfig)
+})
+export default multipleList
