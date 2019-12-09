@@ -1,4 +1,4 @@
 interface Window {
-  wx: any;
-  my: any;
+  wx: any
+  my: any
 }
