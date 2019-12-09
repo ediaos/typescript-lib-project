@@ -1,5 +1,4 @@
 export class MobBridge {
-  constructor() {}
   getTestNumber() {
     return 1
   }
