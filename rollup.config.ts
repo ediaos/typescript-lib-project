@@ -8,6 +8,9 @@ import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import rollupReplace from 'rollup-plugin-replace'
 import license from 'rollup-plugin-license'
+{{#if !isNodeEnv}}
+
+{{/if}}
 const pkg = require('./package.json')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -15,10 +18,18 @@ const isDev = process.env.NODE_ENV === 'development'
 // support muti output
 let multiple = [
   {
+{{#if isNodeEnv}}
+    input: `src/index.ts`,
+{{else}}
     input: isDev ? 'demo/index.ts' : `src/index.ts`,
+{{/if}}
     output: [
       {
+{{#if isNodeEnv}}
+        file: pkg.main,
+{{else}}
         file: isDev ? 'demo/dist/index.js' : pkg.main,
+{{/if}}
         name: camelCase(pkg.name),
         format: 'umd',
         sourcemap: true
@@ -60,6 +71,9 @@ let defaultConfig = {
  * © ${new Date().getFullYear()} {{gitInfo.name}}
  */`
     })
+{{#if isNodeEnv}}
+  ]
+{{else}}
   ].concat(
     isDev
       ? [
@@ -74,6 +88,8 @@ let defaultConfig = {
         ]
       : []
   )
+{{/if}}    
+  
 }
 const multipleList = multiple.map(config => {
   return Object.assign(config, defaultConfig)
