@@ -21,10 +21,10 @@ const banner = `/*!
 // support muti output
 let multiple = [
   {
-    input: isDev ? 'src/demo/index.ts' : `src/index.ts`,
+    input: isDev ? 'demo/index.ts' : `src/index.ts`,
     output: [
       {
-        file: isDev ? 'src/demo/dist/demo.umd.js' : pkg.main,
+        file: isDev ? 'demo/dist/index.js' : pkg.main,
         name: camelCase(libraryName),
         format: 'umd',
         sourcemap: true
@@ -69,11 +69,11 @@ let defaultConfig = {
       ? [
           serve({
             open: true,
-            contentBase: 'src/demo',
+            contentBase: 'demo',
             port: 8080
           }),
           livereload({
-            watch: 'src/demo/dist'
+            watch: 'demo/dist'
           })
         ]
       : []
