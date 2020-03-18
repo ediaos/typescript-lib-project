@@ -37,17 +37,11 @@
       "git add"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
     "@types/jest": "^24.0.23",
     "@types/node": "^13.9.1",
     "colors": "^1.4.0",
-    "commitizen": "^4.0.3",
     "coveralls": "^3.0.9",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.1.0",

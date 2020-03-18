@@ -1,11 +1,11 @@
-import MobBridge from '..'
+import testAddNumber from '..'
 
-console.log('See this in your browser console: Typescript Webpack Starter Launched')
+console.log(
+  'See this in your browser console: Typescript Webpack Starter Launched'
+)
 
 function init() {
-  const mobBridge = MobBridge.getInstance()
-  mobBridge.getTestNumber()
-  console.log('mob-bridge intance', mobBridge)
+  console.log('testAddNumber+10=', testAddNumber(10))
 }
 
 init()
