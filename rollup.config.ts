@@ -10,14 +10,8 @@ import rollupReplace from 'rollup-plugin-replace'
 import license from 'rollup-plugin-license'
 const pkg = require('./package.json')
 
-process.env.VERSION = pkg.version
 const isDev = process.env.NODE_ENV === 'development'
 
-const libraryName = 'ts-lib-project'
-const banner = `/*!
- * typescript-project v${process.env.VERSION}
- * © ${new Date().getFullYear()} EDiaos
- */`
 // support muti output
 let multiple = [
   {
@@ -25,7 +19,7 @@ let multiple = [
     output: [
       {
         file: isDev ? 'demo/dist/index.js' : pkg.main,
-        name: camelCase(libraryName),
+        name: camelCase(pkg.name),
         format: 'umd',
         sourcemap: true
       }
@@ -50,7 +44,6 @@ let defaultConfig = {
     // which external modules to include in the bundle
     // https://github.com/rollup/rollup-plugin-node-resolve#usage
     resolve(),
-
     // Resolve source maps to the original source
     sourceMaps(),
     // add env for project
@@ -62,7 +55,10 @@ let defaultConfig = {
     }),
     // add license for dist
     license({
-      banner
+      banner: `/*!
+ * typescript-project v${pkg.version}
+ * © ${new Date().getFullYear()} EDiaos
+ */`
     })
   ].concat(
     isDev
