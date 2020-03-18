@@ -11,6 +11,7 @@
     "lib"
   ],
   "author": "ediaos <ediaos@live.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": ""
@@ -49,6 +50,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^7.1.2",
+    "@rollup/plugin-commonjs": "^11.0.2",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.11",
     "colors": "^1.4.0",
@@ -68,7 +70,6 @@
     "replace-in-file": "^4.2.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.27.4",
-    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-license": "^0.12.1",
     "rollup-plugin-livereload": "^1.0.4",

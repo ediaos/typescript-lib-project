@@ -1,5 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
@@ -55,7 +55,9 @@ let defaultConfig = {
     sourceMaps(),
     // add env for project
     rollupReplace({
-      'process.env.NODE_ENV': JSON.stringify(isDev ? 'development' : 'production'),
+      'process.env.NODE_ENV': JSON.stringify(
+        isDev ? 'development' : 'production'
+      ),
       'process.env.VERSION': JSON.stringify(pkg.version)
     }),
     // add license for dist
