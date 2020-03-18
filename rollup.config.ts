@@ -5,12 +5,12 @@ import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
 import serve from 'rollup-plugin-serve'
+{{#if !isNodeEnv}}
 import livereload from 'rollup-plugin-livereload'
 import rollupReplace from 'rollup-plugin-replace'
-import license from 'rollup-plugin-license'
-{{#if !isNodeEnv}}
-
 {{/if}}
+import license from 'rollup-plugin-license'
+
 const pkg = require('./package.json')
 
 const isDev = process.env.NODE_ENV === 'development'
