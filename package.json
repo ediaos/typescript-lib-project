@@ -1,16 +1,15 @@
 {
-  "name": "ts-lib-project",
-  "version": "0.0.3",
-  "description": "ts-lib-project",
-  "keywords": [],
-  "main": "dist/ts-lib-project.umd.js",
+  "name": "{{projectName}}",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/{{projectName}}.umd.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "dist",
     "lib"
   ],
-  "author": "ediaos <ediaos@live.com>",
+  "author": "{{gitInfo.name}} <{{gitInfo.email}}>",
   "license": "MIT",
   "repository": {
     "type": "git",

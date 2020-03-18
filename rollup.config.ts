@@ -56,8 +56,8 @@ let defaultConfig = {
     // add license for dist
     license({
       banner: `/*!
- * typescript-project v${pkg.version}
- * © ${new Date().getFullYear()} EDiaos
+ * ${pkg.name} v${pkg.version}
+ * © ${new Date().getFullYear()} {{gitInfo.name}}
  */`
     })
   ].concat(
