@@ -4,15 +4,19 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
-import serve from 'rollup-plugin-serve'
-{{#if !isNodeEnv}}
-import livereload from 'rollup-plugin-livereload'
-import rollupReplace from 'rollup-plugin-replace'
-{{/if}}
 import license from 'rollup-plugin-license'
+import rollupReplace from 'rollup-plugin-replace'
+{{#unless isNodeEnv}}
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
+{{/unless}}
 
 const pkg = require('./package.json')
-
+{{#if isNodeEnv}}
+const external = Object.keys(pkg.dependencies || {})
+const outputGlobals = {}
+external.forEach(i => (outputGlobals[i] = i))
+{{/if}}
 const isDev = process.env.NODE_ENV === 'development'
 
 // support muti output
@@ -27,6 +31,7 @@ let multiple = [
       {
 {{#if isNodeEnv}}
         file: pkg.main,
+        globals: outputGlobals,
 {{else}}
         file: isDev ? 'demo/dist/index.js' : pkg.main,
 {{/if}}
@@ -40,7 +45,11 @@ let multiple = [
 
 let defaultConfig = {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: [],
+{{#if isNodeEnv}}
+        external,
+{{else}}
+        external: [],
+{{/if}}
   watch: {
     include: 'src/**'
   },
