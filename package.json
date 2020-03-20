@@ -1,5 +1,5 @@
 {
-  "name": "{{projectName}}",
+  "name": "@tujia/{{projectName}}",
   "version": "0.0.1",
   "description": "",
   "main": "dist/{{projectName}}.umd.js",
