@@ -12,6 +12,7 @@
     "emitDecoratorMetadata": true,
     "declarationDir": "lib",
     "noImplicitThis": false,
+    "noUnusedLocals": true,
     "outDir": "lib",
     "typeRoots": ["node_modules/@types"]
   },
