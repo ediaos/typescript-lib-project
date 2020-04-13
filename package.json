@@ -29,13 +29,6 @@
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "precommit": "lint-staged"
   },
-  "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
     "@types/jest": "^24.0.23",
@@ -43,7 +36,7 @@
     "colors": "^1.4.0",
     "coveralls": "^3.0.9",
     "cross-env": "^7.0.2",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "jest": "^24.9.0",
     "jest-config": "^24.9.0",
     "jest-environment-jsdom": "^24.9.0",
@@ -72,5 +65,17 @@
     "tslint-config-standard": "^9.0.0",
     "typedoc": "^0.17.1",
     "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "tslint --project tsconfig.json --config tslint.json --format codeFrame --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
