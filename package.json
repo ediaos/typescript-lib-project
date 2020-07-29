@@ -20,7 +20,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "lint": "standard \"src/**/*.ts\" --fix",
+    "lint": "standard \"src/**/*.ts\" --fix --verbose | snazzy",
     "prebuild": "rimraf dist && rimraf lib",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts --environment NODE_ENV:production && typedoc --out docs --target es6 --theme minimal --mode file src ",
     "dev": "rollup -c rollup.config.ts -w --environment NODE_ENV:development",
@@ -39,14 +39,13 @@
     "colors": "^1.4.0",
     "coveralls": "^3.0.9",
     "cross-env": "^7.0.2",
+    "eslint": "^7.5.0",
     "eslint-plugin-html": "^6.0.2",
     "eslint-plugin-markdown": "^1.0.2",
-    "husky": "^4.2.5",
     "jest": "^24.9.0",
     "jest-config": "^24.9.0",
     "jest-environment-jsdom": "^24.9.0",
     "jest-environment-jsdom-global": "^1.2.0",
-    "lint-staged": "^10.0.8",
     "lodash.camelcase": "^4.3.0",
     "prompt": "^1.0.0",
     "replace-in-file": "^5.0.2",
@@ -62,6 +61,7 @@
     "rollup-plugin-typescript2": "^0.25.2",
     "semantic-release": "^17.0.4",
     "shelljs": "^0.8.3",
+    "snazzy": "^8.0.0",
     "standardx": "^5.0.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.6.2",
@@ -69,8 +69,7 @@
     "typescript": "^3.8.3"
   },
   "eslintConfig": {
-    "rules": {
-    }
+    "rules": {}
   },
   "standard": {
     "parser": "@typescript-eslint/parser",
