@@ -13,9 +13,9 @@ const pkg = require('./package.json')
 const isDev = process.env.NODE_ENV === 'development'
 
 // support muti output
-let multiple = [
+const multiple = [
   {
-    input: isDev ? 'demo/index.ts' : `src/index.ts`,
+    input: isDev ? 'demo/index.ts' : 'src/index.ts',
     output: [
       {
         file: isDev ? 'demo/dist/index.js' : pkg.main,
@@ -27,7 +27,7 @@ let multiple = [
   }
 ]
 
-let defaultConfig = {
+const defaultConfig = {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
   watch: {
@@ -63,15 +63,15 @@ let defaultConfig = {
   ].concat(
     isDev
       ? [
-          serve({
-            open: true,
-            contentBase: 'demo',
-            port: 8080
-          }),
-          livereload({
-            watch: 'demo/dist'
-          })
-        ]
+        serve({
+          open: true,
+          contentBase: 'demo',
+          port: 8080
+        }),
+        livereload({
+          watch: 'demo/dist'
+        })
+      ]
       : []
   )
 }

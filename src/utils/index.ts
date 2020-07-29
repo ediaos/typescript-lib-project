@@ -1,7 +1,6 @@
 /**
  * Utils
  */
-
-export function test(): number {
+export function test (): number {
   return 1
 }
