@@ -4,21 +4,23 @@ import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
-import serve from 'rollup-plugin-serve'
-import livereload from 'rollup-plugin-livereload'
-import rollupReplace from 'rollup-plugin-replace'
 import license from 'rollup-plugin-license'
-const pkg = require('./package.json')
+import rollupReplace from 'rollup-plugin-replace'
 
+const pkg = require('./package.json')
+const external = Object.keys(pkg.dependencies || {})
+const outputGlobals = {}
+external.forEach(i => (outputGlobals[i] = i))
 const isDev = process.env.NODE_ENV === 'development'
 
 // support muti output
 const multiple = [
   {
-    input: isDev ? 'demo/index.ts' : 'src/index.ts',
+    input: 'src/index.ts',
     output: [
       {
-        file: isDev ? 'demo/dist/index.js' : pkg.main,
+        file: pkg.main,
+        globals: outputGlobals,
         name: camelCase(pkg.name),
         format: 'umd',
         sourcemap: true
@@ -29,7 +31,7 @@ const multiple = [
 
 const defaultConfig = {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: [],
+  external,
   watch: {
     include: 'src/**'
   },
@@ -56,24 +58,12 @@ const defaultConfig = {
     // add license for dist
     license({
       banner: `/*!
- * typescript-project v${pkg.version}
- * © ${new Date().getFullYear()} EDiaos
+ * ${pkg.name} v${pkg.version}
+ * © ${new Date().getFullYear()} guoxing
  */`
     })
-  ].concat(
-    isDev
-      ? [
-        serve({
-          open: true,
-          contentBase: 'demo',
-          port: 8080
-        }),
-        livereload({
-          watch: 'demo/dist'
-        })
-      ]
-      : []
-  )
+  ]
+
 }
 const multipleList = multiple.map(config => {
   return Object.assign(config, defaultConfig)
