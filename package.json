@@ -10,15 +10,6 @@
     "dist",
     "lib"
   ],
-  "author": "ediaos <ediaos@live.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "engines": {
-    "node": ">=6.0.0"
-  },
   "scripts": {
     "lint": "standard \"src/**/*.ts\" --fix --verbose | snazzy",
     "prebuild": "rimraf dist && rimraf lib",
@@ -28,6 +19,15 @@
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "precommit": "lint-staged"
+  },
+  "author": "ediaos <ediaos@live.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=6.0.0"
   },
   "dependencies": {},
   "devDependencies": {
